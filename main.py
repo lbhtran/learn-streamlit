@@ -1,34 +1,28 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import altair as alt
 
 
 def main():
     st.header("Alex Le Tran")
-    st.write("Greeting, Alex!")
-    st.write("Greeting, Alex!")
 
-    if st.button("Say hello"):
-        st.write("Why hello there")
-    else:
-        st.write("Goodbye")
+    about_me = st.Page("about_me.py", title="About Me", icon="🎈")
+    skills = st.Page("skills.py", title="Skills", icon="🔨")
+    experience = st.Page("experience.py", title="Experience", icon="🤸")
+    portfolio = st.Page("portfolio.py", title="Portoflio", icon="📗")
+    education = st.Page("education.py", title="Education", icon="🏫")
+    contact = st.Page("contact.py", title="Contact", icon="🤙")
 
-    df = pd.DataFrame(
-        {
-            "language": ["Python", "SQL", "Javascript", "Lua"],
-            "level": [5, 5, 4, 3],
-        }
+    pg = st.navigation(
+        [
+            about_me,
+            skills,
+            experience,
+            portfolio,
+            education,
+            contact,
+        ]
     )
-    st.write(df)
 
-    df2 = pd.DataFrame(np.random.randn(200, 3), columns=["a", "b", "c"])
-    c = (
-        alt.Chart(df2)
-        .mark_circle()
-        .encode(x="a", y="b", size="c", color="c", tooltip=["a", "b", "c"])
-    )
-    st.write(c)
+    pg.run()
 
 
 if __name__ == "__main__":
