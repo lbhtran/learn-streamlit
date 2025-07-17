@@ -1,7 +1,37 @@
 [theme]
 
-primaryColor = "#d33682"
-backgroundColor = "#002b36"
-secondaryBackgroundColor = "#586e75"
-textColor = "#fafafa"
-font = "sans serif"
+primaryColor = "#f5bde6"             # Pink
+backgroundColor = "#24273a"          # Base
+secondaryBackgroundColor = "#181926" # Crust
+codeBackgroundColor = "#1e2030"      # Mantle
+
+textColor = "#cad3f5" # Text
+linkColor = "#8aadf4" # Blue
+linkUnderline = false
+font = "monospace"
+
+chartCategoricalColors = [
+  "#f4dbd6", # Rosewater
+  "#f0c6c6", # Flamigo
+  "#f5bde6", # Pink
+  "#c6a0f6", # Mauve
+  "#ed8796", # Red
+  "#ee99a0", # Maroon
+  "#f5a97f", # Peach
+  "#eed49f", # Yellow
+  "#a6da95", # Green
+  "#8bd5ca", # Teal
+]
+
+chartSequentialColors = [
+  "#f4dbd6", # Rosewater
+  "#f0c6c6", # Flamigo
+  "#f5bde6", # Pink
+  "#c6a0f6", # Mauve
+  "#ed8796", # Red
+  "#ee99a0", # Maroon
+  "#f5a97f", # Peach
+  "#eed49f", # Yellow
+  "#a6da95", # Green
+  "#8bd5ca", # Teal
+]
