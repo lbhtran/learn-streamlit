@@ -35,46 +35,88 @@ def skills():
         )
     )
 
+    st.dataframe(prog_lang_skills)
+
     st.altair_chart(prog_lang_skills_chart)
 
     st.markdown("#### Python Frameworks")
 
-    PythonFramework = make_dataclass(
-        "PythonFramework",
+    Framework = make_dataclass(
+        "Framework",
         [
             ("framework", str),
-            ("professional_exp", int),
-            ("personal_exp", int),
+            ("experience_lvl", int),
+            ("proficiency_lvl", int),
+            ("language", str),
         ],
     )
 
-    python_fw_skills = pd.DataFrame(
+    skills_matrix = pd.DataFrame(
         [
-            PythonFramework("FastAPI", 5, 4),
-            PythonFramework("Pandas", 5, 5),
-            PythonFramework("Apache Beam", 4, 3),
-            PythonFramework("Streamlit", 1, 3),
+            Framework("FastAPI", 25, 20, "Python"),
+            Framework("Pandas", 39, 45, "Python"),
+            Framework("Apache Beam", 15, 7, "Python"),
+            Framework("Streamlit", -45, -30, "Python"),
+            Framework("Flask", -17, 28, "Python"),
         ]
     )
 
-    st.dataframe(python_fw_skills)
+    st.dataframe(skills_matrix)
 
     base = (
-        alt.Chart(python_fw_skills)
+        alt.Chart(skills_matrix)
         .encode(
-            alt.X("personal_exp:Q")
-            .axis(labelAngle=0)
-            .scale(domain=[0, 6])
-            .title("Personal Experience"),
-            alt.Y("professional_exp:Q")
-            .scale(domain=[0, 6])
-            .title("Professional Experience"),
+            alt.X("experience_lvl:Q")
+            .axis(
+                grid=False,
+                ticks=False,
+                labels=False,
+            )
+            .scale(domain=[-50, 50])
+            .title(None),
+            alt.Y("proficiency_lvl:Q")
+            .axis(
+                grid=False,
+                ticks=False,
+                labels=False,
+            )
+            .scale(domain=[-50, 50])
+            .title(None),
         )
         .properties(
             width=200,
             height=700,
         )
     )
+
+    x_axis = (
+        alt.Chart(
+            pd.DataFrame({"x": [0]}),
+        )
+        .mark_rule(
+            color="#b7bdf8",  # Lavender
+        )
+        .encode(
+            x="x",
+            # color=alt.Color("x", legend=None),
+            size=alt.value(2),
+        )
+    )
+
+    y_axis = (
+        alt.Chart(
+            pd.DataFrame({"y": [0]}),
+        )
+        .mark_rule(
+            color="#b7bdf8",
+        )
+        .encode(
+            y="y",
+            # color=alt.Color("y", legend=None),
+            size=alt.value(2),
+        )
+    )
+
     pts = base.mark_point(
         size=50,
     )
@@ -86,11 +128,15 @@ def skills():
         color="white",
     ).encode(text="framework:N")
 
-    python_fw_skills_chart = (pts + text).configure_axis(
-        tickMinStep=1,
+    skills_matrix_chart = (
+        (x_axis + y_axis + pts + text)
+        .configure_axis(
+            tickMinStep=1,
+        )
+        .configure_view(fill="#363a4f")  # Surface0
     )
 
-    st.altair_chart(python_fw_skills_chart)
+    st.altair_chart(skills_matrix_chart)
 
     st.markdown("#### SQL Flavours")
 
