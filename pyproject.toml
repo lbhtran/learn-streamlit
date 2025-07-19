@@ -1,10 +1,7 @@
 [project]
-name = "learn-streamlit"
+name = "streamlit-resume"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "altair>=5.5.0",
-    "streamlit>=1.46.1",
-]
+dependencies = ["altair>=5.5.0", "streamlit>=1.46.1"]
