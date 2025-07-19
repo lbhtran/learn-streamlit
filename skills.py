@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from dataclasses import make_dataclass
+from themes.catppuccin import macchiato
 
 
 def skills():
@@ -94,11 +95,10 @@ def skills():
             pd.DataFrame({"x": [0]}),
         )
         .mark_rule(
-            color="#b7bdf8",  # Lavender
+            color=macchiato.lavender,
         )
         .encode(
             x="x",
-            # color=alt.Color("x", legend=None),
             size=alt.value(2),
         )
     )
@@ -108,11 +108,10 @@ def skills():
             pd.DataFrame({"y": [0]}),
         )
         .mark_rule(
-            color="#b7bdf8",
+            color=macchiato.lavender,
         )
         .encode(
             y="y",
-            # color=alt.Color("y", legend=None),
             size=alt.value(2),
         )
     )
@@ -133,7 +132,7 @@ def skills():
         .configure_axis(
             tickMinStep=1,
         )
-        .configure_view(fill="#363a4f")  # Surface0
+        .configure_view(fill=macchiato.surface0)
     )
 
     st.altair_chart(skills_matrix_chart)
