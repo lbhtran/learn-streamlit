@@ -36,11 +36,11 @@ def skills():
         )
     )
 
-    st.dataframe(prog_lang_skills)
+    # st.dataframe(prog_lang_skills)
 
     st.altair_chart(prog_lang_skills_chart)
 
-    st.markdown("#### Python Frameworks")
+    st.markdown("#### Frameworks")
 
     Framework = make_dataclass(
         "Framework",
@@ -127,17 +127,13 @@ def skills():
         color="white",
     ).encode(text="framework:N")
 
-    skills_matrix_chart = (
-        (x_axis + y_axis + pts + text)
-        .configure_axis(
-            tickMinStep=1,
-        )
-        .configure_view(fill=macchiato.surface0)
+    skills_matrix_chart = (x_axis + y_axis + pts + text).configure_view(
+        fill=macchiato.surface0,
     )
 
     st.altair_chart(skills_matrix_chart)
 
-    st.markdown("#### SQL Flavours")
+    st.markdown("#### Database Experience")
 
 
 if __name__ == "__main__":
