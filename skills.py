@@ -59,6 +59,10 @@ def skills():
             Framework("Apache Beam", 15, 7, "Python"),
             Framework("Streamlit", -45, -30, "Python"),
             Framework("Flask", -17, 28, "Python"),
+            Framework("Prefect", 37, 23, "Python"),
+            Framework("React", -38, 5, "Javascript"),
+            Framework("dbt", -12, -42, "SQL"),
+            Framework("dataform", 12, 32, "SQL"),
         ]
     )
 
